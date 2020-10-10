@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Escape Room: Asteroid Edition</title>
+    <link rel="shortcut icon" href="favicon.ico">
+    <style>
+        * {box-sizing: border-box}
+        body {font-family: Verdana, sans-serif; margin:0; height:100%}
+        .mySlides {display: none}
+        rect {fill:rgb(255,0,255);stroke-width:3;stroke:rgb(255,255,255);opacity:0.0}
+
+        .slideshow-container {
+            max-height: 100%;
+            position: relative;
+            margin: auto;
+        }
+
+        .img1 {
+            background: url("pics/wall1.jpg") no-repeat fixed 50%;
+            background-size: cover;
+        }
+
+        .img2 {
+            background: url("pics/wall2.jpg") no-repeat fixed 50%;
+            background-size: cover;
+        }
+
+        .img3 {
+            background: url("pics/wall3.jpg") no-repeat fixed 50%;
+            background-size: cover;
+        }
+
+        .img4 {
+            background: url("pics/wall4.jpg") no-repeat fixed 50%;
+            background-size: cover;
+        }
+
+        .content {
+            min-height: 100vh
+        }
+
+        .prev, .next {
+            cursor: pointer;
+            position: absolute;
+            top: 50%;
+            width: auto;
+            padding: 16px;
+            margin-top: -22px;
+            color: white;
+            font-weight: bold;
+            font-size: 18px;
+            transition: 0.6s ease;
+            border-radius: 0 3px 3px 0;
+            user-select: none;
+        }
+
+        .next {
+            right: 0;
+            border-radius: 3px 0 0 3px;
+        }
+
+        .prev:hover, .next:hover {
+            background-color: rgba(0,0,0,0.8);
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            padding-top: 100px;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgb(0,0,0);
+            background-color: rgba(0,0,0,0.4);
+        }
+
+        .modal-content {
+            background-color: #fefefe;
+            margin: auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+        }
+
+        .modal-image {
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            height: 70vh;
+        }
+
+        .container {
+            position: relative;
+        }
+
+        .forgot-eyes {
+            position: absolute;
+            display: block;
+            bottom: 20%;
+            left: 48%
+        }
+
+        .hang-up {
+            position: absolute;
+            display: block;
+            bottom: 4%;
+            left: 38%
+        }
+
+        .call-security {
+            position: absolute;
+            display: block;
+            top:31%;
+            left: 36%
+        }
+
+        .fade {
+            -webkit-animation-name: fade;
+            -webkit-animation-duration: 1.5s;
+            animation-name: fade;
+            animation-duration: 1.5s;
+        }
+
+        @-webkit-keyframes fade {
+            from {opacity: .4}
+            to {opacity: 1}
+        }
+
+        @keyframes fade {
+            from {opacity: .4}
+            to {opacity: 1}
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="slideshow-container">
+
+        <div class="mySlides fade img1">
+            <div class="content"></div>
+            <!-- story & rules modal -->
+            <div style="position: absolute; bottom: 27%; left: 31%">
+                <a onclick="dispStory()">
+                    <svg width="5vw" height="10vh"><rect width="100%" height="100%"/></svg>
+                    <div id="myModalStory" class="modal">
+                        <div class="modal-content">
+                            <p>You finally landed your dream internship with a renowned but eccentric astrophysicist!
+                                Unfortunately, she spends all her time and energy on her research,
+                                so she’s not quite up to date with the latest newfangled social norms,
+                                like not making your intern work late at night on her 20th birthday.
+                                It’s 10:10PM and you’re the last one in the lab.
+                                It’s a Saturday, so the night shift security guard decides he might as well lock up early --
+                                by the time you see the headlights of his car turn on through the window, it’s too late!
+                                You’re locked in, and he’s driven away. </p>
+
+                            <p>You reach for your phone, wondering who you might be able to call to help you out.
+                                But this notification greets you on the home screen.
+                                <span style="color:red">BREAKING NEWS: Huge asteroid hurtling toward Earth, will enter the atmosphere in 45! minutes.
+                                NASA says extinction of human race is inevitable.</span>
+                                At this point in 2020, we’re not even surprised anymore. </p>
+
+                            <p>NASA had said that an asteroid might hit Earth in November, but that it was only 6.5 feet long.
+                                You click the article, and it turns out they’d made a minor mistake that eventually propagated into 12 million percent error,
+                                so it’s actually 780,000 ft!. Happens to the best of us. </p>
+
+                            <p>You’re debating whether you should call your birth parents or your amazing dumpster mommy
+                                first to say your final goodbyes, when you get a call from your supervisor.</p>
+
+                            <p>She’d started suspecting something was wrong a few weeks ago,
+                                so she’s been secretly building a kinetic impactor that can veer the asteroid off course.
+                                But as luck would have it, she decided to go snowboarding for the weekend.
+                                She’s never gotten stuck there in all the years she’d been going,
+                                but today her car is buried in the snow. It’s up to you. </p>
+
+                            <p>You can activate the kinetic impactor from her computer,
+                                but it’s locked by an iris scan. In order to bypass it,
+                                you need to answer some security questions. She doesn’t remember the answers,
+                                and she never wrote them down because she doesn’t want the military / old white men to steal her work.
+                                Instead, she planted a bunch of puzzles around her lab that would lead her to answers. </p>
+
+                            <p>Just as you’re about to ask her for more information,
+                                the Internet and all the phone lines go dead because
+                                they’ve been overwhelmed by people trying to contact their loved ones.
+                                You only have 45! minutes left to save the world. Hurry!! </p>
+                            <!-- <p>Here are the rules: </p>
+                            <ol>
+                                <li>No researching on the internet.</li>
+                                <li>No inspecting the elements on the website.</li>
+                                <li>No phones or outside sources.</li>
+                                <li>You may only talk to the people in the room.</li>
+                                <li>You may use paper and pencil to take notes.</li>
+                                <li>This is best played in a maximized browser window.</li>
+                            </ol> -->
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <!-- form to unlock door, on computer -->
+            <div style="position: absolute; top: 60%; left: 36%">
+                <a onclick="unlock()">
+                    <svg width="8vw" height="12vh"><rect width="100%" height="100%"/></svg>
+                    <div id="myModalUnlock" class="modal">
+                        <div class="modal-content">
+                            <div class="container" id="scanner">
+                                <img src="pics/failed_iris_scanner.jpg" class="modal-image"></img>
+                                <div class="forgot-eyes">
+                                    <svg width="18vw" height="5vh"><rect width="100%" height="100%" onclick="forgot_eyes()"></svg>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <!-- door to the party -->
+            <div style="position: absolute; top: 40%; right: 38%;">
+                <a onclick="door()" style="cursor:default;" id="door">
+                    <svg width="12vw" height="42vh"><rect width="100%" height="100%"/></svg>
+                    <!-- kinetic impactor button -->
+                    <div id="myModalButton" class="modal">
+                        <div class="modal-content">
+                            <a href="party.html">
+                                <img src="pics/button.jpg" class="modal-image"></img>
+                            </a>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </div>
+
+        <div class="mySlides fade img2">
+            <div class="content"></div>
+            <!-- light cone puzzle -->
+            <div style="position: absolute; top: 49%; left: 32%">
+                <a onclick="puzzle6()">
+                    <svg width="8vw" height="15vh"><rect width="100%" height="100%"/></svg>
+                    <div id="myModal6" class="modal">
+                        <div class="modal-content">
+                            <p style="text-align:center">
+                                <a href="https://docs.google.com/spreadsheets/d/1V9FW12W8mMhv7g_KwtI9Wny-0dc8X791ThOhA-wXuYE/edit?usp=sharing" target="_blank">You should probably click this</a>
+                            </p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <!-- crossword puzzle -->
+            <div style="position: absolute; top: 49%; left: 43%">
+                <a onclick="puzzle1()">
+                    <svg width="10vw" height="15vh"><rect width="100%" height="100%"/></svg>
+                    <div id="myModal1" class="modal">
+                        <div class="modal-content">
+                            <p style="text-align:center">
+                                <a href="https://docs.google.com/spreadsheets/d/1YnJnOAn1jGlo3es7GSGfLlnrYWPfcaSI4mxmcYo3cpI/edit?usp=sharing" target="_blank">You should probably click this</a>
+                            </p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <!-- donuts puzzle -->
+            <div style="position: absolute; bottom: 28%; right: 44%">
+                <a onclick="puzzle2()">
+                    <svg width="6vw" height="8vh"><rect width="100%" height="100%"/></svg>
+                    <div id="myModal2" class="modal">
+                        <div class="modal-content">
+                            <img src="pics/puzzle_donut.jpg" class="modal-image"></img>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </div>
+
+        <div class="mySlides fade img3">
+            <div class="content"></div>
+            <!-- lamp -->
+            <div style="position: absolute; top: 45%; left: 30%">
+                <a onclick="puzzle3()">
+                    <svg width="10vw" height="35vh"><rect width="100%" height="100%"/></svg>
+                    <div id="myModal3" class="modal">
+                        <div class="modal-content">
+                            <img src="pics/puzzle_lamp.jpg" class="modal-image"></img>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </div>
+
+        <div class="mySlides fade img4">
+            <div class="content"></div>
+            <!-- tree -->
+            <div style="position: absolute; top: 25%; left: 43%">
+                <a onclick="puzzle4()">
+                    <svg width="14vw" height="25vh"><rect width="100%" height="100%"/></svg>
+                    <div id="myModal4" class="modal">
+                        <div class="modal-content">
+                            <img src="pics/puzzle_leaf.jpg" class="modal-image"></img>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <!-- crumpled paper -->
+            <div style="position: absolute; bottom: 22%; left: 41%">
+                <a onclick="puzzle5()">
+                    <svg width="5vw" height="10vh"><rect width="100%" height="100%"/></svg>
+                    <div id="myModal5" class="modal">
+                        <div class="modal-content">
+                            <img src="pics/puzzle_text.jpg" class="modal-image"></img>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <!-- sandwich -->
+            <div style="position: absolute; bottom: 12%; right: 39%">
+                <a onclick="sandwich()">
+                    <svg width="8vw" height="15vh"><rect width="100%" height="100%"/></svg>
+                </a>
+            </div>
+        </div>
+
+        <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+        <a class="next" onclick="plusSlides(1)">&#10095;</a>
+
+    </div>
+
+    <script>
+        var slideIndex = 1;
+        showSlides(slideIndex);
+
+        function plusSlides(n) {
+            showSlides(slideIndex += n);
+        }
+
+        function currentSlide(n) {
+            showSlides(slideIndex = n);
+        }
+
+        function showSlides(n) {
+            var i;
+            var slides = document.getElementsByClassName("mySlides");
+            if (n > slides.length) {slideIndex = 1}
+            if (n < 1) {slideIndex = slides.length}
+            for (i = 0; i < slides.length; i++) {
+                slides[i].style.display = "none";
+            }
+            slides[slideIndex-1].style.display = "block";
+        }
+
+        var modalStory = document.getElementById("myModalStory");
+        var modal1 = document.getElementById("myModal1");
+        var modal2 = document.getElementById("myModal2");
+        var modal3 = document.getElementById("myModal3");
+        var modal4 = document.getElementById("myModal4");
+        var modal5 = document.getElementById("myModal5");
+        var modal6 = document.getElementById("myModal6")
+        var modalUnlock = document.getElementById("myModalUnlock");
+        var modalButton = document.getElementById("myModalButton");
+
+        var viewedStory = false;
+        function dispStory() {
+            modalStory.style.display = "block";
+            viewedStory = true;
+        }
+
+        var p1 = false;
+        var p2 = false;
+        var p3 = false;
+        var p4 = false;
+        var p5 = false;
+        var p6 = false;
+        function puzzle1() { if(viewedStory) { modal1.style.display = "block"; p1 = true; } }
+        function puzzle2() { if(viewedStory) { modal2.style.display = "block"; p2 = true; } }
+        function puzzle3() { if(viewedStory) { modal3.style.display = "block"; p3 = true; } }
+        function puzzle4() { if(viewedStory) { modal4.style.display = "block"; p4 = true; } }
+        function puzzle5() { if(viewedStory) { modal5.style.display = "block"; p5 = true; } }
+        function puzzle6() { if(viewedStory) { modal6.style.display = "block"; p6 = true; } }
+        function unlock() {
+            if(p1 && p2 && p3 && p4 && p5 && p6) {
+                myModalUnlock.style.display = "block";
+            } else {
+                alert("You can't access this yet.")
+            }
+        }
+
+        var modals = [modalStory, modal1, modal2, modal3,
+            modal4, modal5, modal6, modalUnlock, modalButton]
+
+        window.onclick = function(event) {
+            if (modals.includes(event.target)) {
+                modalStory.style.display = "none";
+                modal1.style.display = "none";
+                modal2.style.display = "none";
+                modal3.style.display = "none";
+                modal4.style.display = "none";
+                modal5.style.display = "none";
+                modal6.style.display = "none";
+                modalUnlock.style.display = "none";
+                modalButton.style.display = "none";
+            }
+        }
+
+        var unlocked_computer = false;
+        function check_security() {
+            var q1 = document.getElementById("q1").value;
+            var q2 = document.getElementById("q2").value;
+            var q3 = document.getElementById("q3").value;
+
+            var error = "";
+            if (q1.toLowerCase() != "dumpster babies")  { error += "#1, "; }
+            if (q2.toLowerCase() != "red cat")  { error += "#2, "; }
+            if (q3.toLowerCase() != "an ox")  { error += "#3, "; }
+
+            if (error != "") {
+                error = error.slice(0, -2) + " incorrect.";
+                alert(error);
+            } else {
+                unlocked_computer = true;
+                computer_unlocked();
+            }
+        }
+
+        function check_equation() {
+            var ans = document.getElementById("equation").value;
+            if (ans != "2") {
+                alert("Nope");
+            } else {
+                aimed_missile();
+            }
+        }
+
+        var click_door_after_sandwich = false;
+        function door() {
+            if (click_door_after_sandwich) {
+                myModalButton.style.display = "block";
+            }
+            if (found_sandwich) {
+                click_door_after_sandwich = true;
+            } else {
+                alert("This door is locked.");
+            }
+        }
+
+        function forgot_eyes() {
+            document.getElementById("scanner").innerHTML =
+                '<form id="form_security" onsubmit="return false;">' +
+                    '<label for="q1">What was the name of your favorite alt rock band? </label>' +
+                    '<input style="position:absolute; width:10%;" type="text" id="q1"/><br><br>' +
+                    '<label for="q2">Your favorite childhood pet was a: </label>' +
+                    '<input style="position:absolute; width:10%;" type="text" id="q2"/><br><br>' +
+                    '<label for="q3">What was the cause of its death? </label>' +
+                    '<input style="position:absolute; width:10%;" type="text" id="q3"/><br><br>' +
+                    '<input style="position:absolute; width:12%;" type="submit" onclick="check_security();" /><br>' +
+                '</form>'
+        }
+
+        function computer_unlocked() {
+            document.getElementById("scanner").innerHTML =
+                '<img src="pics/equation.jpg" class="modal-image"></img>' +
+                '<form id="form_security" onsubmit="return false;">' +
+                    '<label for="equation">Answer: </label>' +
+                    '<input style="position:absolute; width:10%;" type="text" id="equation"/><br><br>' +
+                    '<input style="position:absolute; width:12%;" type="submit" onclick="check_equation();" /><br>' +
+                '</form>'
+        }
+
+        function aimed_missile() {
+            alert("Kinetic Impactor Settings Received. Go to the roof to press the activation button.");
+            alert("Your phone is ringing!");
+            phone();
+        }
+
+        function phone() {
+            document.getElementById("scanner").innerHTML =
+                '<img src="pics/phone_mommy.jpg" class="modal-image"></img>' +
+                '<div class="hang-up">' +
+                    '<svg width="6vw" height="16vh"><rect width="100%" height="100%" onclick="call_security()"></svg>' +
+                '</div>'
+        }
+
+        function call_security() {
+            document.getElementById("scanner").innerHTML =
+                '<img src="pics/phone_recents.jpg" class="modal-image"></img>' +
+                '<div class="call-security">' +
+                    '<svg width="22vw" height="9vh"><rect width="100%" height="100%" onclick="on_call()"></svg>' +
+                '</div>'
+        }
+
+        var calling_security = false;
+        function on_call() {
+            calling_security = true;
+            msg = 'You quickly explain to the security guard that humanity’s existence depends on him coming back to unlock the lab doors.' +
+                    'He’s reluctant, saying, "I don’t know, both my parents died of COVID and my childhood home burned from the gender reveal party fire.' +
+                    'I think God is trying to tell me that humanity’s time is up... unless you find a better reason that saving the world to come."'
+            alert(msg)
+        }
+
+        var found_sandwich = false;
+        function sandwich() {
+            if(calling_security) {
+                found_sandwich = true;
+                alert("You found a sandwich.");
+                alert("It worked! There is no God, there is only the almighty will of the sandwich.")
+                door();
+            }
+        }
+    </script>
+
+</body>
+</html>
