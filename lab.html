@@ -160,7 +160,7 @@
 
                             <p>You reach for your phone, wondering who you might be able to call to help you out.
                                 But this notification greets you on the home screen.
-                                <span style="color:red">BREAKING NEWS: Huge asteroid hurtling toward Earth, will enter the atmosphere in 45! minutes.
+                                <span style="color:red">BREAKING NEWS: Huge asteroid hurtling toward Earth, will enter the atmosphere in 60 minutes.
                                 NASA says extinction of human race is inevitable.</span>
                                 At this point in 2020, we’re not even surprised anymore. </p>
 
@@ -186,7 +186,7 @@
                             <p>Just as you’re about to ask her for more information,
                                 the Internet and all the phone lines go dead because
                                 they’ve been overwhelmed by people trying to contact their loved ones.
-                                You only have 45! minutes left to save the world. Hurry!! </p>
+                                You only have 55 minutes left to save the world. Hurry!! </p>
                             <!-- <p>Here are the rules: </p>
                             <ol>
                                 <li>No researching on the internet.</li>
@@ -241,7 +241,7 @@
                     <div id="myModal6" class="modal">
                         <div class="modal-content">
                             <p style="text-align:center">
-                                <a href="https://docs.google.com/spreadsheets/d/1V9FW12W8mMhv7g_KwtI9Wny-0dc8X791ThOhA-wXuYE/edit?usp=sharing" target="_blank">You should probably click this</a>
+                                <a href="https://docs.google.com/spreadsheets/d/19_d-J8SXPCKMUC1u2jnOrqjgJiJHiGAm7pt3Ut3Spnc/edit#gid=0" target="_blank">You should probably click this</a>
                             </p>
                         </div>
                     </div>
@@ -423,7 +423,7 @@
 
         function check_equation() {
             var ans = document.getElementById("equation").value;
-            if (ans != "2") {
+            if (ans != "1978588718") {
                 alert("Nope");
             } else {
                 aimed_missile();
@@ -457,11 +457,10 @@
 
         function computer_unlocked() {
             document.getElementById("scanner").innerHTML =
-                '<img src="pics/equation.jpg" class="modal-image"></img>' +
+                '<img src="pics/equation.jpg" class="modal-image"></img>' + '<br>' +
                 '<form id="form_security" onsubmit="return false;">' +
-                    '<label for="equation">Answer: </label>' +
-                    '<input style="position:absolute; width:10%;" type="text" id="equation"/><br><br>' +
-                    '<input style="position:absolute; width:12%;" type="submit" onclick="check_equation();" /><br>' +
+                    '<input style="position:absolute; width:10%; left:40%" type="text" id="equation"/>' +
+                    '<input style="position:absolute; width:10%; left:50%" type="submit" onclick="check_equation();" /><br>' +
                 '</form>'
         }
 
@@ -490,10 +489,12 @@
         var calling_security = false;
         function on_call() {
             calling_security = true;
+            document.getElementById("scanner").innerHTML =
+                '<img src="pics/phone_security.jpg" class="modal-image"></img>'
             msg = 'You quickly explain to the security guard that humanity’s existence depends on him coming back to unlock the lab doors.' +
                     'He’s reluctant, saying, "I don’t know, both my parents died of COVID and my childhood home burned from the gender reveal party fire.' +
                     'I think God is trying to tell me that humanity’s time is up... unless you find a better reason that saving the world to come."'
-            alert(msg)
+            setTimeout(function(){ alert(msg); }, 1000);
         }
 
         var found_sandwich = false;
